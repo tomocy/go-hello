@@ -29,6 +29,13 @@ spec:
             port:
                 number: 80
             subset: v1
+        weight: 60
+      - destination:
+            host: hello
+            port:
+                number: 80
+            subset: v2
+        weight: 40
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -40,3 +47,6 @@ spec:
     - name: v1
       labels:
         version: v1
+    - name: v2
+      labels:
+        version: v2
