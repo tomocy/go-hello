@@ -26,9 +26,7 @@ func run(w io.Writer, args []string) error {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
-		fmt.Fprint(w, "Ver 1: Hello!\n")
-	})
+	mux.HandleFunc("/", sayHello)
 
 	fmt.Fprintf(w, "listen and serve on %s\n", *addr)
 	if err := http.ListenAndServe(*addr, mux); err != nil {
@@ -36,4 +34,8 @@ func run(w io.Writer, args []string) error {
 	}
 
 	return nil
+}
+
+func sayHello(w http.ResponseWriter, _ *http.Request) {
+	fmt.Fprint(w, "Ver 1: Hello!\n")
 }
