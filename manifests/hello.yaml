@@ -10,7 +10,6 @@ metadata:
     labels:
         app: hello
 spec:
-    type: NodePort
     selector:
         app: hello
     ports:
