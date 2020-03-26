@@ -37,5 +37,5 @@ func run(w io.Writer, args []string) error {
 }
 
 func sayHello(w http.ResponseWriter, _ *http.Request) {
-	fmt.Fprint(w, "Ver 1: Hello!\n")
+	fmt.Fprint(w, "Ver 2: Hello!\n")
 }

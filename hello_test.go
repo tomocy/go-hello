@@ -30,7 +30,7 @@ func TestSayHello(t *testing.T) {
 		return
 	}
 
-	expectedBody := "Ver 1: Hello!\n"
+	expectedBody := "Ver 2: Hello!\n"
 	if string(body) != expectedBody {
 		t.Errorf("should have responsed the expected body: expected %q, but got %q", expectedBody, body)
 	}
