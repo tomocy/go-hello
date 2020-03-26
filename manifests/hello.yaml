@@ -10,6 +10,7 @@ metadata:
     labels:
         app: hello
 spec:
+    type: NodePort
     selector:
         app: hello
     ports:
@@ -18,7 +19,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: hello
+    name: hello-v1
     labels:
         app: hello
         version: v1
@@ -38,5 +39,31 @@ spec:
             containers:
             - name: hello
               image: tomocy/hello:v1
+              ports:
+              - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hello-v2
+    labels:
+        app: hello
+        version: v2
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: hello
+            version: v2
+    template:
+        metadata:
+            labels:
+                app: hello
+                version: v2
+        spec:
+            serviceAccountName: hello
+            containers:
+            - name: hello
+              image: tomocy/hello:v2
               ports:
               - containerPort: 80
